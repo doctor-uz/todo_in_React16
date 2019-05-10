@@ -3,17 +3,37 @@ import React, { Component } from "react";
 // import './App.css';
 
 export default class App extends Component {
+  //1 step
   constructor(props) {
     super(props);
     this.state = {
-      userName: "Dilshod"
+      userName: "Dilshod",
+      todoItems: [
+        { action: "Write a code", done: false },
+        { action: "Read a book", done: false },
+        { action: "Watch TV", done: true },
+        { action: "Create React App", done: false }
+      ],
+      newItemText: ""
     };
   }
 
-  changeStateData = () => {
-    this.setState({
-      userName: this.state.userName === "Dilshod" ? "Bob" : "Dilshod"
-    });
+  updateNewtextValue = e => {
+    this.setState({ newItemText: e.target.value });
+  };
+
+  //2 step
+  createNewTodo = () => {
+    if (
+      !this.state.todoItems.find(item => item.action === this.state.newItemText)
+    ) {
+      this.setState({
+        todoItems: [
+          ...this.state.todoItems,
+          { action: this.state.newItemText, done: false }
+        ]
+      });
+    }
   };
 
   render() {
