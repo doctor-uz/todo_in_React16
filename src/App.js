@@ -43,6 +43,20 @@ export default class App extends Component {
       )
     });
 
+  todoTableRows = () =>
+    this.state.todoItems.map(item => (
+      <tr key={item.action}>
+        <td>{item.action}</td>
+        <td>
+          <input
+            type="checkbox"
+            checked={item.done}
+            onChange={() => this.toggleTodo(item)}
+          />
+        </td>
+      </tr>
+    ));
+
   render() {
     return (
       <div>
