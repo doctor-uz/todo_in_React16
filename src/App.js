@@ -3,7 +3,6 @@ import React, { Component } from "react";
 // import './App.css';
 
 export default class App extends Component {
-  //1 step
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +21,6 @@ export default class App extends Component {
     this.setState({ newItemText: e.target.value });
   };
 
-  //2 step
   createNewTodo = () => {
     if (
       !this.state.todoItems.find(item => item.action === this.state.newItemText)
